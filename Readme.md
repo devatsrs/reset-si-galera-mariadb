@@ -378,6 +378,9 @@ group_concat_max_len=1048576
 #binlog_row_image='MINIMAL'
 
 
+auto_increment_increment = 1
+
+
 ```
 
 
