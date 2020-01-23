@@ -212,173 +212,93 @@ sudo vi /etc/my.cnf
 ```
 
 #
-
 # This group is read both both by the client and the server
-
 # use it for options that affect everything
-
 #
-
 [client-server]
-
-
+socket=/vol/data/mysql/mysql.sock
 
 #
-
 # include all files from the config directory
-
 #
-
 !includedir /etc/my.cnf.d
-
-
-
 
 
 [mysqld]
 
-
-
 datadir=/vol/data/mysql
-
 socket=/vol/data/mysql/mysql.sock
 
 
-
-
-
 # 80% RAM innodb_buffer_pool_size 52G = 55834574848
-
 innodb_buffer_pool_size=55834574848
-
 #innodb_flush_method=normal
 
 
-
-
-
 #sort_buffer_size=8000M
-
 #join_buffer_size = 3000M
-
 #read_rnd_buffer_size=3000M
 
-
-
 #1G= 1073741824 500M = 524288000 50M= 52428800
-
 sort_buffer_size=52428800
-
 join_buffer_size=52428800
-
 read_rnd_buffer_size=52428800
-
 max_sort_length=8388608
-
 max_length_for_sort_data=1048
 
 
-
-
-
 # 1.5G = 1610612736 500M = 524288000
-
 innodb_lock_wait_timeout=90
-
 query_cache_type=1
-
 query_cache_size=52428800
-
 query_cache_limit=52428800
-
 thread_cache_size=90
-
 max_connections=500
 
 
-
-
-
 #9G = 9663676416
-
 max_heap_table_size=9663676416
-
 tmp_table_size=9663676416
-
 max_allowed_packet=52428800
-
 table_open_cache=300
-
 #Support Large Txn
-
 #innodb_log_buffer_size=9663676416
 
 
-
-
-
 #Log
-
 log_output=FILE
 
-
-
 log_warnings=2
-
 log_error=mariadb.err
 
-
-
 slow_query_log
-
 slow_query_log = 1
-
 slow_query_log_file = mariadb-slow.log
-
 long_query_time=600
-
-log_queries_not_using_indexes=ON
-
-
-
+log_queries_not_using_indexes=0
 
 
 tmpdir=/vol/data/mysql/mysqltmp
 
 
-
 character-set-server=utf8
-
 collation-server=utf8_unicode_ci
-
 skip-character-set-client-handshake
-
 #character-set-connection=utf8
 
-
-
 innodb_buffer_pool_instances=4
-
 innodb_page_cleaners=4
-
-
 
 group_concat_max_len=1048576
 
 
 
-
-
-
-
 # 2GB for last txn
-
 #wsrep_max_ws_size=2147483647
-
 #binlog_row_image='MINIMAL'
 
-
 auto_increment_increment = 1
+
 
 
 ```
@@ -451,3 +371,7 @@ sudo galera_new_cluster
  sudo systemctl start mariadb  
  
  
+
+
+
+
